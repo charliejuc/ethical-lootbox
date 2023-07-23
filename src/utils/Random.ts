@@ -12,13 +12,13 @@ export const randomInteger = (minOrMax: number, max?: number): number => {
 }
 
 export type ProbabilitiesList<T> = [number, T]
-export const randomListByProb = <T>(
+export const randomByProb = <T>(
     probList: ProbabilitiesList<T>[],
     _randomGenerator = Math.random
 ) => {
     const accuracy = 100_000_000
     const random = _randomGenerator() * accuracy
-    const sortedLists = probList.sort((a, b) => a[0] - b[0])
+    const sortedLists = probList.slice().sort((a, b) => a[0] - b[0])
 
     let accProb = 0
     for (const element of sortedLists) {
